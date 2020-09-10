@@ -6,14 +6,17 @@
     <title>$title$</title>
     <authors>Fatih Bahceci</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-     <license type="expression">MIT</license>
-    <!--<license type="file">LICENSE</license>-->
-    <projectUrl>http://project_url_here_or_delete_this_line/</projectUrl>
-    <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>
+    <!--<license type="expression">MIT</license>-->
+    <license type="file">LICENSE.txt</license>
+    <projectUrl>https://github.com/fatihbahceci/FBCTextLogger</projectUrl>
+    <!--<iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>-->
     <description>$description$</description>
-    <releaseNotes>First release.</releaseNotes>
+    <releaseNotes>Specs Updated.</releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>Logger MultiChannel</tags>
   </metadata>
+  <files>
+    <file src="LICENSE.txt" target="" />
+  </files>
 </package>
 
