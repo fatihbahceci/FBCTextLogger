@@ -215,6 +215,21 @@ namespace FBCTextLogger
         //{
 
         //}
+        static readonly string INVALID_FILE_FOLDER_CHARS = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+        private string CheckInvalidFileNameChars(string illegal)
+        {
+            if (string.IsNullOrEmpty(illegal))
+            {
+                return illegal;
+            }
+            //string illegal = "\"M\"\\a/ry/ h**ad:>> a\\/:*?\"| li*tt|le|| la\"mb.?";
+            foreach (char c in INVALID_FILE_FOLDER_CHARS)
+            {
+                illegal = illegal.Replace(c.ToString(), "_");
+            }
+            return illegal;
+        }
+
         private void createNewWriter()
         {
             totalBytesWritten = 0;
@@ -246,7 +261,8 @@ namespace FBCTextLogger
                 Directory.CreateDirectory(workingPath);
             }
             string suffix = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss-fff");
-            logFilePath = Path.Combine(workingPath, $"{logFilePath}_{(string.IsNullOrEmpty(opt.ChannelName) ? "" : opt.ChannelName + "_")}{suffix}.log");
+            string channelNameFile = CheckInvalidFileNameChars(opt.ChannelName ?? "");
+            logFilePath = Path.Combine(workingPath, $"{logFilePath}_{(string.IsNullOrEmpty(channelNameFile) ? "" : channelNameFile + "_")}{suffix}.log");
             writer = new StreamWriter(logFilePath, true);
         }
 
